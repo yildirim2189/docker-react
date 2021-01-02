@@ -1,0 +1,10 @@
+# Docker için sudo komutlarına ihtiyacımız olduğu için;
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t yildirim2189/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true yildirim2189/docker-react npm run test
